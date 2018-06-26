@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 public class JokeViewerActivity extends AppCompatActivity {
 
+    public static final String EXTRA_KEY_JOKE ="EXTRA_JOKE";
+
     String joke;
 
     @Override
@@ -13,18 +15,12 @@ public class JokeViewerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_joke_viewer);
 
-        joke = getIntent().getStringExtra("EXTRA_JOKE");
-        if (savedInstanceState != null){
-            joke = savedInstanceState.getString("JOKE");
+        if(getIntent().getStringExtra(EXTRA_KEY_JOKE) != null) {
+            joke = getIntent().getStringExtra(EXTRA_KEY_JOKE);
+
+            TextView jokeTextView = findViewById(R.id.joke_text_view);
+            jokeTextView.setText(joke);
+
         }
-
-        TextView jokeTextView = findViewById(R.id.joke_text_view);
-        jokeTextView.setText(joke);
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString("JOKE", joke);
     }
 }

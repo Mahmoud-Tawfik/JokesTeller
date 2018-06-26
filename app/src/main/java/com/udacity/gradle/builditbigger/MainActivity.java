@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     public void showJoke(String joke) {
         if (!joke.isEmpty()){
             Intent intent = new Intent(this, JokeViewerActivity.class);
-            intent.putExtra("EXTRA_JOKE", joke);
+            intent.putExtra(JokeViewerActivity.EXTRA_KEY_JOKE, joke);
             startActivity(intent);
         } else {
             Toast.makeText(this, R.string.no_jokes_available, Toast.LENGTH_SHORT).show();
