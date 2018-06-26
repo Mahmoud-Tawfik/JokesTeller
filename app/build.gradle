@@ -20,7 +20,6 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
-        multiDexEnabled true
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -70,4 +69,10 @@ dependencies {
     testImplementation 'com.android.support.test:runner:1.0.2'
     testImplementation 'com.android.support.test:rules:1.0.2'
     testImplementation "org.robolectric:robolectric:3.8"
+}
+
+configurations {
+    all {
+        exclude module: 'commons-logging'
+    }
 }

@@ -13,12 +13,13 @@ public class AsyncTaskTest {
     @Test
     public void AsyncTaskReturn() throws Exception {
         EndpointsAsyncTask task = new EndpointsAsyncTask();
+        task.setLocalhost(true);
         task.execute(new AsyncTaskHandler() {
             @Override
             public void OnResultReceivedListener(String result) {
                 assertFalse("Joke is empty!", result.isEmpty());
                 assertFalse("Failed to connect to server! make sure to run the appengine",result.contains("failed to connect"));
-                assertFalse("Connection timed out! make sure to run the appengine",result.contains("connect timed out"));
+                assertFalse("Connection refused! make sure to run the appengine",result.contains("Connection refused"));
             }
         });
     }
